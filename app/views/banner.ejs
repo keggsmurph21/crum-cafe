@@ -1,17 +1,24 @@
 <div class="banner">
 
-  <div class="banner-left">
-    The Crumb Cafe
+  <div class="sub-banner banner-left">
+
+    <a href="/">The Crumb Cafe</a>
+    
   </div>
 
-  <div class="banner-right">
+  <div class="sub-banner banner-right">
 
     <% if (user) { %>
 
       <span>
         Logged in as <a href="/admin"><%= user.username %> </a>
       </span>
-      <a href="/admin/logout">(Log out)</a>
+
+      <form action="/admin/logout" method="post">
+
+        <button id="logout" type="submit">Log out</button>
+
+      </form>
 
     <% } else { %>
 

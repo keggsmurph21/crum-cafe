@@ -33,7 +33,7 @@ module.exports = (app, passport) => {
   // admin logout
   app.post('/admin/logout', funcs.isLoggedIn, (req, res) => {
 
-    req.logout();
+    req.session.admin = null;
     res.redirect('/admin/login');
 
   });

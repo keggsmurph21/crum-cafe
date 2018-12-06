@@ -15,10 +15,14 @@ body {
 
 }
 
+.sub-banner {
+  display: flex;
+}
+
 a {
 
   text-decoration: none;
   font-weight: bold;
-  color: #444;
-  
+  color: #aaa;
+
 }
