@@ -1,0 +1,28 @@
+{
+  "name": "crum-cafe-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keggsmurph21/crum-cafe.git"
+  },
+  "author": "Kevin J. Murphy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keggsmurph21/crum-cafe/issues"
+  },
+  "homepage": "https://github.com/keggsmurph21/crum-cafe#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.3.15",
+    "morgan": "^1.9.1",
+    "prompt-sync": "^4.1.6"
+  }
+}
