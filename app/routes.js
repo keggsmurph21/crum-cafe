@@ -1,57 +1,79 @@
 'use strict';
 
-const MenuItem = require('./models/MenuItem');
-const User = require('./models/User');
+const funcs = require('./funcs');
 
-module.exports = app => {
+const MenuItem = require('./models/MenuItem');
+const Student = require('./models/Student');
+
+module.exports = (app, passport) => {
 
   // index page
   app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('index.ejs', {
+      user: req.session.admin,
+      message: req.flash('index-message'),
+    });
   });
 
-  // login/logout pages
-  app.get('/login', (req, res) => {
-    res.render('login.ejs');
+  // admin login pages
+  app.get('/admin/login', funcs.isLoggedOut, (req, res) => {
+    res.render('login.ejs', {
+      user: req.session.admin,
+      message: req.flash('login-message'),
+    });
+  });
+  app.post('/admin/login', passport.authenticate('web-login', {
+
+    successRedirect: '/admin',
+    failureRedirect: '/admin/login',
+    failureFlash: true,
+
+  }));
+
+  // admin logout
+  app.post('/admin/logout', funcs.isLoggedIn, (req, res) => {
+
+    req.logout();
+    res.redirect('/admin/login');
+
   });
 
-  app.post('/login', (req, res) => {
-
-    console.log('POSTING TO LOGIN');
-    console.log(req.body);
-    res.redirect('/');
-
+  // admin registration pages
+  app.get('/admin/register', funcs.isLoggedOut, (req, res) => {
+    res.render('register.ejs', {
+      user: req.session.admin,
+      message: req.flash('register-message'),
+    });
   });
+  app.post('/admin/register', passport.authenticate('web-register', {
 
-  app.post('/logout', (req, res) => {
+    successRedirect: '/admin',
+    failureRedirect: '/admin/register',
+    failureFlash: true,
 
-    console.log('POSTING TO LOGOUT');
-    console.log(req.body);
-    res.redirect('/');
+  }));
 
-  });
-
-  // admin page
-  app.get('/admin', (req, res) => {
-
+  // admin home page
+  app.get('/admin', funcs.isLoggedIn, (req, res) => {
     MenuItem.find({}, (err, items) => {
 
       if (err)
         throw err;
 
-      res.render('admin.ejs', { items: items });
+      Student.find({}, (err, students) => {
 
+        if (err)
+          throw err;
+
+        res.render('admin.ejs', {
+          user: req.session.admin,
+          items: items,
+          students: students,
+          message: req.flash('admin-message'),
+        });
+
+      });
     });
-
-  });
-
-  // API routes
-  app.post('/api/login', (req, res) => {
-
-  });
-
-  app.post('/api/logout', (req, res) => {
-
   });
 
 };

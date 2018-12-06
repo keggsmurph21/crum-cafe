@@ -1,0 +1,25 @@
+<div class="banner">
+
+  <div class="banner-left">
+    The Crumb Cafe
+  </div>
+
+  <div class="banner-right">
+
+    <% if (user) { %>
+
+      <span>
+        Logged in as <a href="/admin"><%= user.username %> </a>
+      </span>
+      <a href="/admin/logout">(Log out)</a>
+
+    <% } else { %>
+
+      <a href="/admin/login">Log in</a>
+      <a href="/admin/register">Register</a>
+
+    <% }%>
+
+  </div>
+
+</div>

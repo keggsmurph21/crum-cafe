@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 //const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MemoryStore = new session.MemoryStore();
+const passport = require('passport');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -23,11 +25,14 @@ app.use(session({
   saveUninitialized: true,
   resave: false,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');
 
-router(app);
+router(app, passport);
 app.use(express.static('app/public'));
 
 const server = http.createServer(app).listen(config.PORT, () => {

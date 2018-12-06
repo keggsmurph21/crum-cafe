@@ -6,10 +6,15 @@ const MenuItemSchema = mongoose.Schema({
 
   id: Number,
   name: String,
-  cost: Number,
 
-  isOnMenu: Boolean,
-  isAvailable: Boolean,
+  onMenu: Boolean,
+  onHold: Boolean,
+
+  cost: Number,
+  description: String,
+  waitTime: String,
+  isVegetarian: Boolean,
+  isVegan: Boolean,
 
 });
 
