@@ -2,7 +2,7 @@
   "name": "crumb-cafe-web",
   "version": "1.0.0",
   "description": "",
-  "main": "app/server.js",
+  "main": "index.js",
   "scripts": {
     "test": "node test/index.js",
     "dev": "node_modules/nodemon/bin/nodemon.js app/server.js"
@@ -25,6 +25,8 @@
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
+    "jquery": "^3.3.1",
+    "moment": "^2.22.2",
     "mongoose": "^5.3.15",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",

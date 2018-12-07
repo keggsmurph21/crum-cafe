@@ -1,0 +1,16 @@
+/
+/about
+/admin
+/admin/login
+/admin/register
+/admin/menu
+/admin/menu/new
+/admin/menu/696969
+/admin/menu/696969/edit
+/admin/orders
+/admin/orders/696969
+/admin/orders/696969/edit
+/menu
+/order/new
+/order/696969
+/order/696969/cancel

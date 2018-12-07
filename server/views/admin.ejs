@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Crumb Cafe admin</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+
+	<%- include('banner.ejs') %>
+
+	<div class="content">
+
+		<div class="back-buttons">
+			<a href="/">Crumb Cafe</a>
+			/
+			<a href="/admin">admin</a>
+		</div>
+
+		<% if (message) { %>
+			<div class="flash-message">
+				<%= message %>
+			</div>
+		<% } %>
+
+		<div class="admin-actions" name="menu">
+			Menu item:
+			<form action="" method="post">
+				<button type="button" name="list">List</button>
+				<button type="button" name="new">New</button>
+				<input type="text" name="search" />
+				<button type="button" name="view">View</button>
+				<button type="button" name="edit">Edit</button>
+				<button type="button" name="delete">Delete</button>
+			</form>
+		</div>
+
+		<div class="admin-actions" name="orders">
+			Order:
+			<form action="" method="post">
+				<button type="button" name="list">List</button>
+				<button type="button" name="new">New</button>
+				<input type="text" name="search" />
+				<button type="button" name="view">View</button>
+				<button type="button" name="edit">Edit</button>
+				<button type="button" name="delete">Delete</button>
+			</form>
+		</div>
+	</div>
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/core.js"></script>
+	<script src="/js/admin.js"></script>
+
+</body>
+</html>

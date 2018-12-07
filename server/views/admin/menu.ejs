@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Crumb Cafe admin</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+
+	<%- include('../banner.ejs') %>
+
+	<div class="content">
+
+		<div class="back-buttons">
+			<a href="/">Crumb Cafe</a>
+			/
+			<a href="/admin">admin</a>
+			/
+			<a href="/admin/menu">menu</a>
+		</div>
+
+		<% if (message) { %>
+			<div class="flash-message">
+				<%= message %>
+			</div>
+		<% } %>
+
+		<h1>Menu items</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Created</th>
+					<th>Modified</th>
+					<th>On Menu</th>
+					<th>On Hold</th>
+					<th>Cost</th>
+					<th>Description</th>
+					<th>Wait time</th>
+					<th>Vegetarian?</th>
+					<th>Vegan?</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				<tr>
+			</thead>
+			<tbody>
+				<% for (let i=0; i< items.length; i++) { %>
+					<% console.log(i, items[i].dateCreated) %>
+					<tr id="<%= items[i].id %>" class="admin-actions">
+						<td><%= items[i].id %></td>
+						<td><%= items[i].name %></td>
+						<td><%= items[i].dateCreated %></td>
+						<td><%= items[i].dateModified %></td>
+						<td><%= items[i].isViewable %></td>
+						<td><%= items[i].isOrderable %></td>
+						<td><%= items[i].cost %></td>
+						<td><%= items[i].description %></td>
+						<td><%= items[i].waitTime %></td>
+						<td><%= items[i].isVegetarian %></td>
+						<td><%= items[i].isVegan %></td>
+						<td>
+							<button type="button" name="view">view</button>
+						</td>
+						<td>
+							<button type="button" name="edit">edit</button>
+						</td>
+						<td>
+							<form action="/admin/menu/<%= items[i].id %>/delete" method="post">
+								<input type="hidden" />
+								<button type="submit" name="delete">delete</button>
+							</form>
+						</td>
+					</tr>
+				<% } %>
+			</tbody>
+		</table>
+
+		<div class="admin-actions">
+			<button type="button" name="new">new</button>
+		</div>
+
+	</div>
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/core.js"></script>
+	<script src="/js/menu.js"></script>
+
+</body>
+</html>

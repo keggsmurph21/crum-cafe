@@ -1,0 +1,9 @@
+/admin/login
+/admin/logout
+/admin/register
+/admin/menu/new
+/admin/menu/696969/edit
+/admin/orders/696969/edit
+/admin/orders/696969/delete
+/order/new
+/order/696969/cancel

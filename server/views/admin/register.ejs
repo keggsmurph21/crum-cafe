@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Crumb Cafe admin</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+
+	<%- include('../banner.ejs') %>
+
+	<div class="content">
+
+		<div class="back-buttons">
+			<a href="/">Crumb Cafe</a>
+			/
+			<a href="/admin">admin</a>
+			/
+			<a href="/admin/register">register</a>
+		</div>
+
+	  <form action="register" method="post">
+
+			<% if (message && message.length) { %>
+				<p>
+					<%= message %>
+				</p>
+			<% } %>
+
+	    <p>
+	      Username:
+	      <input type="text" name="username" pattern="^[a-z0-9]\w{7,31}$" />
+	    </p>
+
+	    <p>
+				Password:
+	      <input type="password" name="password" pattern="^.{8,32}$" />
+	    </p>
+
+			<p>
+				Registration token:
+				<input type="password" name="REGISTER_SECRET" />
+			</p>
+
+	    <button type="submit">Register</button>
+
+	  </form>
+	</div>
+</body>
+</html>
