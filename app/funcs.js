@@ -42,7 +42,7 @@ function isLoggedIn(req, res, next) {
   if (req.session.admin)
     return next();
 
-  req.flash('login-message', 'You must log in to view this page');
+  req.flash('login', 'You must log in to view this page');
   res.redirect('/admin/login');
 }
 
@@ -51,7 +51,7 @@ function isLoggedOut(req, res, next) {
   if (!req.session.admin)
     return next();
 
-  req.flash('admin-message', 'You\'re already logged in!');
+  req.flash('admin', 'You\'re already logged in!');
   res.redirect('/admin');
 }
 

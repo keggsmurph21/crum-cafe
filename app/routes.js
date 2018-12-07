@@ -11,7 +11,7 @@ module.exports = (app, passport) => {
   app.get('/', (req, res) => {
     res.render('index.ejs', {
       user: req.session.admin,
-      message: req.flash('index-message'),
+      message: req.flash('index'),
     });
   });
 
@@ -19,7 +19,7 @@ module.exports = (app, passport) => {
   app.get('/admin/login', funcs.isLoggedOut, (req, res) => {
     res.render('login.ejs', {
       user: req.session.admin,
-      message: req.flash('login-message'),
+      message: req.flash('login'),
     });
   });
   app.post('/admin/login', passport.authenticate('web-login', {
@@ -42,7 +42,7 @@ module.exports = (app, passport) => {
   app.get('/admin/register', funcs.isLoggedOut, (req, res) => {
     res.render('register.ejs', {
       user: req.session.admin,
-      message: req.flash('register-message'),
+      message: req.flash('register'),
     });
   });
   app.post('/admin/register', passport.authenticate('web-register', {
@@ -69,11 +69,23 @@ module.exports = (app, passport) => {
           user: req.session.admin,
           items: items,
           students: students,
-          message: req.flash('admin-message'),
+          message: req.flash('admin'),
         });
 
       });
     });
+  });
+
+  // admin create menu item
+  app.get('/admin/create-menu-item', funcs.isLoggedIn, (req, res) => {
+    res.render('create-menu-item.ejs', {
+      user: req.session.admin,
+      message: req.flash('create-menu-item'),
+    });
+  });
+  app.post('/admin/create-menu-item', funcs.isLoggedIn, (req, res) => {
+    console.log(req.body);
+    res.sendStatus(500);
   });
 
 };

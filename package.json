@@ -2,9 +2,10 @@
   "name": "crumb-cafe-web",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/server.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node test/index.js",
+    "dev": "node_modules/nodemon/bin/nodemon.js app/server.js"
   },
   "repository": {
     "type": "git",

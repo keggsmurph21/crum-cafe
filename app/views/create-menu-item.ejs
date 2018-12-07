@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Crumb Cafe admin page</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+
+	<%- include('banner.ejs') %>
+
+	<div class="content">
+
+		<% if (message) { %>
+			<div class="flash-message">
+				<%= message %>
+			</div>
+		<% } %>
+
+    <a href="/admin">Back to admin page</a>
+
+    <form action="create-menu-item" method="post">
+
+      Name
+      <input type="text" name="name" />
+      <br />
+
+      Cost
+      <input type="text" name="cost" pattern="^\$?\d+(.\d\d)?" />
+      <br />
+
+      Description
+      <input type="text" name="description" />
+      <br />
+
+      Approx time to prepare
+      <input type="text" name="waitTime" />
+      <br />
+
+      Vegetarian?
+      <input type="checkbox" name="isVegetarian" />
+      <br />
+
+      Vegan?
+      <input type="checkbox" name="isVegan" />
+      <br />
+
+      <button type="submit">OK</button>
+
+    </form>
+
+	</div>
+
+</body>
+</html>

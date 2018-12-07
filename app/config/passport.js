@@ -20,21 +20,21 @@ const webRegister = new LocalStrategy(
     if (req.body.REGISTER_SECRET !== params.REGISTER_SECRET) {
 
       console.log('invalid registration secret');
-      return next(null, false, req.flash('register-message', 'Incorrect registration token'));
+      return next(null, false, req.flash('register', 'Incorrect registration token'));
 
     }
 
     if (!username.match(/^[a-z0-9]\w{7,31}$/)) {
 
       console.log('username malformed');
-      return next(null, false, req.flash('register-message', 'Username must be between 8 and 32 chars, starting with an alphanumeric chars, and only containing alphanumeric chars or underscores'));
+      return next(null, false, req.flash('register', 'Username must be between 8 and 32 chars, starting with an alphanumeric chars, and only containing alphanumeric chars or underscores'));
 
     }
 
     if (!password.match(/^.{8,32}$/)) {
 
       console.log('password malformed');
-      return next(null, false, req.flash('register-message', 'Password must be between 8 and 32 chars'));
+      return next(null, false, req.flash('register', 'Password must be between 8 and 32 chars'));
 
     }
 
@@ -46,7 +46,7 @@ const webRegister = new LocalStrategy(
       if (admin) {
 
         console.log('username exists');
-        return next(null, false, req.flash('register-message', `Username "${username}" is already taken`));
+        return next(null, false, req.flash('register', `Username "${username}" is already taken`));
 
       } else {
 
@@ -91,7 +91,7 @@ const webLogin = new LocalStrategy(
       if (!admin) {
 
         console.log('no admin found with that username');
-        return next(null, false, req.flash('login-message', `Cannot find admin "${username}"`));
+        return next(null, false, req.flash('login', `Cannot find admin "${username}"`));
 
       } else if (admin.isValidPassword(password)) {
 
@@ -102,7 +102,7 @@ const webLogin = new LocalStrategy(
       } else {
 
         console.log('invalid username/password');
-        return next(null, false, req.flash('login-message', 'Invalid username/password'));
+        return next(null, false, req.flash('login', 'Invalid username/password'));
 
       }
 
