@@ -80,7 +80,6 @@ module.exports = (app, passport) => {
 
   app.get('/admin/menu', funcs.isLoggedIn, (req, res) => {
     MenuItem.find({}, (err, items) => {
-      console.log(items)
       res.render('admin/menu.ejs', {
         user: req.session.admin,
         message: req.flash('admin-menu'),
@@ -112,7 +111,7 @@ module.exports = (app, passport) => {
       });
 
     } catch (e) {
-      res.sendStatus(417);
+      res.sendStatus(418);
     }
   });
 
